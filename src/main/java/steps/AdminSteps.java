@@ -1,6 +1,7 @@
 package steps;
 
 import impl.AdminImpl;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,10 +21,10 @@ public class AdminSteps {
     public void iShouldNotBeAbleToDeleteRoleOrDepartmentIfItIsAssignedToAnEmployee() throws InterruptedException {
         Assert.assertFalse(impl.deleteRoleOrDepartment());
     }
-    @Given("I navigate to homepage")
-    public void iNavigateToHomepage() {
-        impl.navigateToLoginPage();
-    }
+//    @Given("I navigate to homepage")
+//    public void iNavigateToHomepage() {
+//        impl.navigateToLoginPage();
+//    }
 
     @When("I input {string} as {string}")
     public void i_input_as(String inputFieldName, String value) {
@@ -31,13 +32,15 @@ public class AdminSteps {
     }
 
     @Then("I click Enter button")
-    public void iClickEnterButton() {
+    public void iClickEnterButton() throws InterruptedException {
         impl.getPage().Enter.click();
+        Thread.sleep(2000);
     }
 
     @Then("Employee is populate in the data table")
     public void employeeIsPopulateInTheDataTable() {
         Assert.assertEquals("success", impl.verifyEachUserFields());
     }
+
 
 }

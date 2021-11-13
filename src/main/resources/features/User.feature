@@ -10,3 +10,12 @@ Feature: User page
     And I should be able to see table field last name
     And I should be able to see table field role
     And I should be able to see table field department
+
+  Scenario:  Verify Employee is populate as User
+    When I input "ID" as "1010"
+    And I input "firstname" as "GamesUser"
+    And I input "lastname" as "WongUser"
+    And  I input "Selecrole" as "QA"
+    And  I input "Selecdepartment" as "HR"
+    Then I click Enter button
+    Then Employee is populate in the data table

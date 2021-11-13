@@ -68,11 +68,6 @@ public class AdminImpl {
         return false;
     }
 
-    public void navigateToLoginPage(){
-        WebDriverUtils.getDriver().get(ConfigReader.readProperty("url"));
-    }
-
-
     Map<String, String> userFieldInputsMap = new LinkedHashMap<>();
 
     public void fillInputField(String inputFieldName, String value){
@@ -99,9 +94,6 @@ public class AdminImpl {
         String result = "success";
         List<WebElement> allTds = getPage().userTableRows.findElements(By.xpath("//tbody//tr"));
 
-        for(int i = 0; i<allTds.size(); i++){
-            System.out.println(allTds.get(i).getText());
-        }
         for(String eachField: userFieldInputsMap.keySet()){
             boolean missing = true;
             for(int i = 0; i < allTds.size(); i++){
